@@ -1,0 +1,37 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      python: 3.12
+    commands:
+      - echo "Installing dependencies for both Lambda functions..."
+      
+  build:
+    commands:
+      - echo "Building index-photos-v-cf Lambda function..."
+      - cd lambda/index-photos
+      - pip install -r requirements.txt -t .
+      - zip -r ../../index-photos-deployment.zip . -x "*.git*" -x "buildspec.yml"
+      - cd ../..
+      
+      - echo "Building search-photos-v-cf Lambda function..."
+      - cd lambda/search-photos
+      - pip install -r requirements.txt -t .
+      - zip -r ../../search-photos-deployment.zip . -x "*.git*" -x "buildspec.yml"
+      - cd ../..
+      
+  post_build:
+    commands:
+      - echo "Deploying index-photos-v-cf Lambda function..."
+      - aws lambda update-function-code --function-name index-photos-v-cf --zip-file fileb://index-photos-deployment.zip
+      
+      - echo "Deploying search-photos-v-cf Lambda function..."
+      - aws lambda update-function-code --function-name search-photos-v-cf --zip-file fileb://search-photos-deployment.zip
+      
+      - echo "Both Lambda functions deployed successfully!"
+
+artifacts:
+  files:
+    - index-photos-deployment.zip
+    - search-photos-deployment.zip
