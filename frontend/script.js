@@ -1,6 +1,7 @@
 // Global state
 let selectedFiles = [];
 
+
 // DOM Elements
 const dragDropZone = document.getElementById('dragDropZone');
 const fileInput = document.getElementById('fileInput');
@@ -286,3 +287,4 @@ function showError(message) {
 
 // Initialize app
 init();
+
