@@ -3,7 +3,6 @@ import boto3
 import os
 from opensearchpy import OpenSearch, RequestsHttpConnection
 from requests_aws4auth import AWS4Auth
-
 # Initialize AWS clients
 lex_client = boto3.client('lexv2-runtime')
 
@@ -237,3 +236,4 @@ def search_opensearch(keywords):
     except Exception as e:
         print(f"Error searching OpenSearch: {str(e)}")
         return []
+
