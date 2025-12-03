@@ -9,9 +9,9 @@ phases:
       
   post_build:
     commands:
-      - echo "Deploying to S3 bucket cc-photo-bucket-b1-v-cf..."
-      - aws s3 sync . s3://cc-photo-bucket-b1-v-cf/ --delete --exclude ".git/*" --exclude "buildspec.yml" --exclude "*.md"
-      - echo "Frontend deployed successfully to cc-photo-bucket-b1-v-cf!"
+      - echo "Deploying to S3 bucket cc-photo-bucket-b1-cf..."
+      - aws s3 sync . s3://cc-photo-bucket-b1-cf/ --delete --exclude ".git/*" --exclude "*.md"
+      - echo "Frontend deployed successfully to cc-photo-bucket-b1-cf!"
 
 artifacts:
   files:
