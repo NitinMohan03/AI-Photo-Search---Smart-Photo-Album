@@ -209,7 +209,7 @@ body {
     z-index: 1;
 }
 
-/* Drag and Drop Zone */
+/* Drag & Drop Zone */
 .drag-drop-zone {
     border: 2px dashed var(--border-color);
     border-radius: 16px;
@@ -512,3 +512,4 @@ body {
         gap: 1rem;
     }
 }
+
