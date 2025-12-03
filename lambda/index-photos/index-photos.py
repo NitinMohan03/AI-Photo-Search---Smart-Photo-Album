@@ -132,9 +132,7 @@ def detect_labels(bucket, key):
 def get_custom_labels(bucket, key):
     """
     Retrieve custom labels from S3 object metadata.
-    
     Note: The IAM permission s3:GetObject authorizes both GetObject and HeadObject API calls.
-    
     Args:
         bucket: S3 bucket name
         key: S3 object key
@@ -185,3 +183,4 @@ def index_photo(photo_document):
     except Exception as e:
         print(f"Error indexing photo in OpenSearch: {str(e)}")
         raise
+
